@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -23,12 +24,26 @@ public class Main {
 		main.run();
 
 		System.out.println("Hope everyone enjoys their bonus points!");
+		main.printLeaderboard();
+		
 	}
 	
 	public Main() throws IOException{
 		loadStudentsFromFile();
 	}
 	
+	
+	public void printLeaderboard(){
+		Collections.sort(allStudents);
+		
+		
+		for(int i = 0 ; i < allStudents.size(); i++){
+			System.out.printf("%d. %s (%d points)",
+					(i+1),
+					allStudents.get(i),
+					allStudents.get(i).points);
+			}
+	}
 	public void run() throws IOException{
 		while(askToPickStudent()){
 			Student student = pickRandomStudent();

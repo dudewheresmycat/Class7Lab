@@ -1,6 +1,6 @@
 package cis232.lab;
 
-public class Student {
+public class Student implements Comparable<Student>{  
 	String name;
 	int points;
 	
@@ -23,5 +23,17 @@ public class Student {
 	
 	public int getPoints(){
 		return points;
+	}
+
+	@Override
+	public int compareTo(Student other) {
+		if(points < other.points){
+			return 1;
+		}else if( points > other.points){
+			return -1;
+		}else{
+			return 0;
+		}
+		
 	}
 }
